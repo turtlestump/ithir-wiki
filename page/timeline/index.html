@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Not Found</title>
+  <title>Timeline</title>
   <style>/* --- Junicode (Body: Light/Classic) --- */
 @font-face {
     font-family: "Junicode";
@@ -1691,7 +1691,7 @@ img { max-width: 100%; height: auto; }
     <div data-panel="gallery" hidden></div>
   </div>
 </aside>
-  <script id="browser-sidebar-data" type="application/json">{"tree":{"name":"Ithir Wiki","path":"C:/Personal/Chronicler/Ithir Wiki","file_type":"Directory","children":[{"name":"Public","path":"C:/Personal/Chronicler/Ithir Wiki/Public","file_type":"Directory","children":[{"name":"Campaign","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Campaign","file_type":"Directory","children":[{"name":"House Rules","path":"/ithir-wiki/page/house-rules","file_type":"Markdown"}]},{"name":"Lore","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Lore","file_type":"Directory","children":[{"name":"Timeline","path":"/ithir-wiki/page/timeline","file_type":"Markdown"}]}]}]},"tags":[{"tag":"campaign","pages":[{"title":"House Rules","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Campaign/House Rules.md"}]},{"tag":"lore","pages":[{"title":"Timeline","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Lore/Timeline.md"}]}],"gallery":[],"routes":[{"slug":"house-rules","title":"House Rules"},{"slug":"timeline","title":"Timeline"}],"currentSlug":"","currentTag":null,"activeTab":"files"}</script>
+  <script id="browser-sidebar-data" type="application/json">{"tree":{"name":"Ithir Wiki","path":"C:/Personal/Chronicler/Ithir Wiki","file_type":"Directory","children":[{"name":"Public","path":"C:/Personal/Chronicler/Ithir Wiki/Public","file_type":"Directory","children":[{"name":"Campaign","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Campaign","file_type":"Directory","children":[{"name":"House Rules","path":"/ithir-wiki/page/house-rules","file_type":"Markdown"}]},{"name":"Lore","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Lore","file_type":"Directory","children":[{"name":"Timeline","path":"/ithir-wiki/page/timeline","file_type":"Markdown"}]}]}]},"tags":[{"tag":"campaign","pages":[{"title":"House Rules","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Campaign/House Rules.md"}]},{"tag":"lore","pages":[{"title":"Timeline","path":"C:/Personal/Chronicler/Ithir Wiki/Public/Lore/Timeline.md"}]}],"gallery":[],"routes":[{"slug":"house-rules","title":"House Rules"},{"slug":"timeline","title":"Timeline"}],"currentSlug":"timeline","currentTag":null,"activeTab":"files"}</script>
   <main class="browser-main">
     <header class="browser-view-header">
       <div class="browser-header-left">
@@ -1700,18 +1700,21 @@ img { max-width: 100%; height: auto; }
           <button class="browser-btn ghost" data-browser-action="forward" title="Forward" aria-label="Forward"><span class="themed-icon img-icon browser-nav-icon" style="--icon-url: url('/ithir-wiki/icons/default/Icons_Forward.svg')" aria-hidden="true"></span></button>
         </div>
         <div class="browser-title-container">
-          <h2 class="browser-view-title" title="Page Not Found">Page Not Found</h2>
+          <h2 class="browser-view-title" title="Timeline">Timeline</h2>
         </div>
       </div>
       <div class="browser-view-actions"></div>
     </header>
     <div class="browser-page-body">
       <article class="chronicler-content">
-        <div class="browser-empty-state">
-          <p>The page <strong>missing</strong> is not published, was removed, or does not exist.</p>
-          <p>Use the sidebar to choose a published page.</p>
-        </div>
-      </article>
+      
+      
+      
+      <footer class="page-footer">
+      <span class="footer-label">Tags:</span>
+      <div class="footer-tags"><a class="footer-tag-link" href="/ithir-wiki/tag/lore">lore</a><span class="separator">|</span></div>
+    </footer>
+    </article>
     </div>
   </main>
   <script>
@@ -1723,6 +1726,17 @@ img { max-width: 100%; height: auto; }
     window.addEventListener('pageshow', (event) => {
       if (event.persisted) location.reload();
     });
+    const contentsButton = document.querySelector('[data-browser-action="contents"]');
+    const toc = document.querySelector('.browser-toc');
+    if (contentsButton && toc) {
+      const setTocVisible = (visible) => {
+        toc.hidden = !visible;
+        contentsButton.setAttribute('aria-pressed', String(visible));
+        contentsButton.classList.toggle('active', visible);
+      };
+      setTocVisible(true);
+      contentsButton.addEventListener('click', () => setTocVisible(toc.hidden));
+    }
   </script>
   <script>(function () {
   const dataEl = document.getElementById("browser-sidebar-data");
